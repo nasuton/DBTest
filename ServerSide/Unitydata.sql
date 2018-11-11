@@ -1,0 +1,7 @@
+﻿CREATE TABLE unity (
+ id MEDIUM UNSIGNED NOT NULL AUTO_INCREMENT,
+ name varchar(20),
+ point MEDIUM UNSIGNED NOT NULL,
+ data varchar(50),
+ PRIMARY KEY(id)
+);
