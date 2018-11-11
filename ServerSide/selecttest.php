@@ -11,7 +11,9 @@ $id = $_POST["id"];    //要求されてくるid
 
 try{
   //今回はここでSELECT文を送信している
-  $stmt = $pdo->query("SELECT * FROM 'unity' WHERE 'id' = '". $id. "'");
+  //$sql = "SELECT * FROM unity WHERE id = :id";
+  $stmt = $pdo->query("SELECT * FROM unity WHERE id = '". $id. "'");
+  //$sql = 'SELECT * FROM unity WHERE id';
   foreach ($stmt as $row) {
     //今回はただカラムを指定して、出力された文字列を結合して出力
     $res = $row['id'];

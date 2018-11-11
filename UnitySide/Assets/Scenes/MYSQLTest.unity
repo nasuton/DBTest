@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultText: {fileID: 495841278}
   inputText: {fileID: 1430194845}
-  serverAddress: http://localhost/selecttest.php
+  serverAddress: 127.0.0.1/selecttest.php
 --- !u!1 &495841276
 GameObject:
   m_ObjectHideFlags: 0
