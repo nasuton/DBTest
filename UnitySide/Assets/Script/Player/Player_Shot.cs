@@ -36,6 +36,8 @@ public class Player_Shot : MonoBehaviour {
                 bullets.GetComponent<Rigidbody>().AddForce(shotForce);
 
                 bullets.transform.position = muzzlePos.transform.position;
+
+                SoundManager.Instance.PlaySE("player_shot", false, muzzlePos.transform.position);
             }
 
             yield return new WaitForSeconds(waitShotTime);
