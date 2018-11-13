@@ -2,11 +2,11 @@
 //PDO MySQLに接続
 function connectDB(){
   //ユーザー名やDBアドレスを定義
-  $db_user = "sample";        //ユーザー名
-  $db_pass = "vantan1506";    //パスワード
+  $db_user = "*****";         //DBログイン時のユーザー名
+  $db_pass = "********"; 　   //DBログイン時のパスワード
   $db_host = "localhost";     //ホスト名
-  $db_name = "sampledb";      //データベース名
-  $db_type = "mysql";         //データベースの種類
+  $db_name = "******";        //データベース名("use ～"で使う名前)
+  $db_type = "mysql";         //データベースの種類(今回はMySQLを使用しているため)
 
   $dsn = "$db_type:host=$db_host;dbname=$db_name;cherset=utf8";
 

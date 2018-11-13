@@ -1,0 +1,9 @@
+﻿CREATE TABLE unity (
+id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+name VARCHAR(20),
+point MEDIUMINT UNSIGNED NOT NULL,
+data VARCHAR(50),
+PRIMARY KEY(id)
+);
+
+INSERT INTO unity (name, point, data) VALUES('nasuton', 100, 'unity!!');
