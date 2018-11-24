@@ -56,7 +56,7 @@ $postUser = CheckPostJson('user');
 
 header('Content-type:application/json; charset=UTF-8');
 
-//DBからデータを取得する
+//送られてきたデータを元にDBのデータを上書きする
 try {
     $stmt = $pdo->prepare("update shootingdb set name = :name, point = :point where id = :id");
     $stmt->bindValue(':id', $postUser->id, PDO::PARAM_INT);

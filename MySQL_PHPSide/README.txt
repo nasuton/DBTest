@@ -1,10 +1,10 @@
-‚±‚ÌƒvƒƒWƒFƒNƒg‚ÌUnitySide‚ÌScene/MYSQLTest‚ÅŽg—p‚·‚éDBƒf[ƒ^‚ÍUnitydata.sql ‚É‚µ‚Ä‚ ‚è‚Ü‚·B
+ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®UnitySideã®Scene/MYSQLTestã§ä½¿ç”¨ã™ã‚‹DBãƒ‡ãƒ¼ã‚¿ã¯Unitydata.sql ã«ã—ã¦ã‚ã‚Šã¾ã™ã€‚
 
 
-Žg‚¢•û‚ÍˆÈ‰º‚ðŽQÆ
+ä½¿ã„æ–¹ã¯ä»¥ä¸‹ã‚’å‚ç…§
 
-—áFUitydata.sql ‚ªCƒhƒ‰ƒCƒu’¼‰º‚É‚ ‚Á‚½ê‡
+ä¾‹ï¼šUitydata.sql ãŒCãƒ‰ãƒ©ã‚¤ãƒ–ç›´ä¸‹ã«ã‚ã£ãŸå ´åˆ
 
-MariaDB[(none)]> use ƒf[ƒ^ƒx[ƒX–¼
+MariaDB[(none)]> use ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å
 Database chaged
-MariaDB[(ƒf[ƒ^ƒx[ƒX–¼)]> \. C:\Unitydata.sql
+MariaDB[(ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å)]> \. C:\Unitydata.sql

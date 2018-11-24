@@ -56,7 +56,7 @@ $postUser = CheckPostNumeric('user');
 
 header('Content-type:application/json; charset=UTF-8');
 
-//DBからデータを取得する
+//送られてきたidを元にDBからデータを取得する
 try {
   $stmt = $pdo->prepare("select * from shootingdb where id = :id");
   $stmt->bindValue(':id', $postUser, PDO::PARAM_INT);
