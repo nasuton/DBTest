@@ -44,7 +44,7 @@ public class ResponseManagement : MonoBehaviour
             enemyDict.Add(enemys[i], enemy_percent[i]);
         }
 
-        SoundManager.Instance.PlayBGM("MainBGM2", true, 1.0f);
+//        SoundManager.Instance.PlayBGM("MainBGM2", true, 1.0f);
         
         StartCoroutine("EnemyResponse");
     }
