@@ -14,18 +14,7 @@ public class DBUsers
 
 public class RecordSQL : MonoBehaviour
 {
-
-    [SerializeField]
-    private string getRanking_url = "http://localhost/getRecord.php";
-
-    [SerializeField]
-    private string setRanking_url = "http://localhost/setRecord.php";
-
-    [SerializeField]
-    private const int MAX_RANK = 10;
-
-    //ランキング作成時に使用する予定
-    private List<DBUsers> usersList;
+    #region Singleton
 
     private static RecordSQL mInstance = null;
 
@@ -33,20 +22,89 @@ public class RecordSQL : MonoBehaviour
     {
         get
         {
+            if(mInstance == null)
+            {
+                GameObject obj = new GameObject("NetworkManger");
+                DontDestroyOnLoad(obj);
+                obj.AddComponent<RecordSQL>();
+                mInstance = obj.GetComponent<RecordSQL>();
+                mInstance.Init();
+            }
+
             return mInstance;
         }
     }
 
-    private void Awake()
+    #endregion
+
+    //DBランキングを取得してくる
+    [SerializeField]
+    private string getRanking_url = "http://localhost/getRecord.php";
+
+    //DBのデータを更新する
+    [SerializeField]
+    private string setRanking_url = "http://localhost/setRecord.php";
+
+    [SerializeField]
+    private const int MAX_RANK = 10;
+
+    //ランキング作成時に使用する
+    private List<DBUsers> usersList = new List<DBUsers>();
+
+    private bool isInit = false;
+
+    public void Init()
     {
-        mInstance = gameObject.GetComponent<RecordSQL>();
+        if(isInit == true)
+        {
+            return;
+        }
+
+        //ここで初期化時に行いたいことを書く
+
+        isInit = true;
     }
 
-    public void GetRanking()
+    /// <summary>
+    /// DBからランキングを取得してくる
+    /// </summary>
+    /// <returns>
+    /// ランキングのリスト
+    /// </returns>
+    public List<DBUsers> GetRanking()
     {
+        usersList.Clear();
+
         for(int i = 1; i < 11; i++)
         {
             StartCoroutine(GetRankingData(i));
+        }
+
+        return usersList;
+    }
+
+    public void CheckRank(string uname, int upoint)
+    {
+        //ポイントを判断して超えているものがあれば更新するようにする
+        int tmpPoint = 0;
+        string tmpName = "";
+
+        for(int i = 0; i < usersList.Count; i++)
+        {
+            if(usersList[i].point < upoint)
+            {
+                tmpPoint = usersList[i].point;
+                tmpName = usersList[i].name;
+                usersList[i].point = upoint;
+                usersList[i].name = uname;
+                upoint = tmpPoint;
+                uname = tmpName;
+            }
+
+            //TODO::もしポイントが同じだった場合かつ10位まで続いていた場合は、
+            //      保存した日にちで判断して古いものから削除して新しいものを保存するようにしたい
+            SetRanking(usersList[i].id, usersList[i].name, usersList[i].point);
+            Debug.Log("set id :" + usersList[i].id + ", set name :" + usersList[i].name + ", set point :" + usersList[i].point);
         }
     }
 
@@ -67,10 +125,11 @@ public class RecordSQL : MonoBehaviour
 
             DBUsers user = JsonUtility.FromJson<DBUsers>(www.text);
             Debug.Log("id :" + user.id + ", name :" + user.name + ", score :" + user.point);
+            usersList.Add(user);
         }
     }
 
-    public void SetRanking(int uid, string uname, int upoint)
+    private void SetRanking(int uid, string uname, int upoint)
     {
         if(uid > MAX_RANK)
         {
@@ -101,7 +160,6 @@ public class RecordSQL : MonoBehaviour
                 Debug.LogError("error : " + www.error);
                 yield break;
             }
-            Debug.Log("id :" + updateData.id + "name :" + updateData.name + "point :" + updateData.point);
         }
     }
 }
