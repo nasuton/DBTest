@@ -53,6 +53,19 @@ public class RecordSQL : MonoBehaviour
 
     private bool isInit = false;
 
+    private string userName = "";
+    private int userScore = 0;
+
+    public string UserName
+    {
+        get { return userName; }
+    }
+
+    public int UserScore
+    {
+        get { return userScore; }
+    }
+
     public void Init()
     {
         if(isInit == true)
@@ -88,6 +101,8 @@ public class RecordSQL : MonoBehaviour
         //ポイントを判断して超えているものがあれば更新するようにする
         int tmpPoint = 0;
         string tmpName = "";
+        userName = uname;
+        userScore = upoint;
 
         for(int i = 0; i < usersList.Count; i++)
         {
