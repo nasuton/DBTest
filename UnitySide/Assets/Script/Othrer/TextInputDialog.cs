@@ -25,7 +25,14 @@ public class TextInputDialog : MonoBehaviour
         }
 
         //int nowScore = ScoreCount.Instance.GetScore();
-        RecordSQL.Instance.CheckRank(inputText.text, 300);
+        RecordSQL.Instance.CheckRank(inputText.text, 310);
+        StartCoroutine(SendResult());
+    }
+
+    IEnumerator SendResult()
+    {
+        yield return new WaitForSeconds(3.0f);
+
         this.gameObject.SetActive(false);
     }
 }

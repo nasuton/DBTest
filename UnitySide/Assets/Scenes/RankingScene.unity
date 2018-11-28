@@ -1156,6 +1156,7 @@ MonoBehaviour:
   - {fileID: 326642173}
   newName: {fileID: 1657061556}
   newScore: {fileID: 1273478825}
+  newRank: {fileID: 1556554988}
 --- !u!114 &1144614130 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114907828537511650, guid: 8b13a85f55208e74da989850b97930df,

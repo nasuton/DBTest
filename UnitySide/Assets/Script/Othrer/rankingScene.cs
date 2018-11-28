@@ -17,6 +17,9 @@ public class rankingScene : MonoBehaviour
     [SerializeField]
     private Text newScore = null;
 
+    [SerializeField]
+    private Text newRank = null;
+
     void Start()
     {
         StartCoroutine(hoge());
@@ -28,8 +31,24 @@ public class rankingScene : MonoBehaviour
 
         yield return new WaitForSeconds(10.0f);
 
-        newScore.text = RecordSQL.Instance.UserScore.ToString();
+        rank = RecordSQL.Instance.GetRanking();
+
+        yield return new WaitForSeconds(5.0f);
+
+        int uid = 0;
+        uid = RecordSQL.Instance.UserId;
+
+        newScore.text = RecordSQL.Instance.UserPoint.ToString();
         newName.text = RecordSQL.Instance.UserName;
+        if(uid < 0 || 10 <= uid)
+        {
+            newRank.text = "ランク外";
+        }
+        else
+        {
+            uid += 1;
+            newRank.text = uid.ToString();
+        }
         
         for (int i = 0; i < rank.Count; i++)
         {

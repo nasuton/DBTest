@@ -54,16 +54,23 @@ public class RecordSQL : MonoBehaviour
     private bool isInit = false;
 
     private string userName = "";
-    private int userScore = 0;
+    private int userPoint = 0;
+    private int userId = 0;
+    private bool isRankin = false;
 
     public string UserName
     {
         get { return userName; }
     }
 
-    public int UserScore
+    public int UserPoint
     {
-        get { return userScore; }
+        get { return userPoint; }
+    }
+
+    public int UserId
+    {
+        get { return userId; }
     }
 
     public void Init()
@@ -102,11 +109,12 @@ public class RecordSQL : MonoBehaviour
         int tmpPoint = 0;
         string tmpName = "";
         userName = uname;
-        userScore = upoint;
+        userPoint = upoint;
+        userId = -1;
 
-        for(int i = 0; i < usersList.Count; i++)
+        for (int i = 0; i < usersList.Count; i++)
         {
-            if(usersList[i].point < upoint)
+            if (usersList[i].point < upoint)
             {
                 tmpPoint = usersList[i].point;
                 tmpName = usersList[i].name;
@@ -114,6 +122,12 @@ public class RecordSQL : MonoBehaviour
                 usersList[i].name = uname;
                 upoint = tmpPoint;
                 uname = tmpName;
+
+                if (isRankin == false)
+                {
+                    userId = i;
+                    isRankin = true;
+                }
             }
 
             //TODO::もしポイントが同じだった場合かつ10位まで続いていた場合は、
@@ -121,6 +135,8 @@ public class RecordSQL : MonoBehaviour
             SetRanking(usersList[i].id, usersList[i].name, usersList[i].point);
             Debug.Log("set id :" + usersList[i].id + ", set name :" + usersList[i].name + ", set point :" + usersList[i].point);
         }
+
+        isRankin = false;
     }
 
     IEnumerator GetRankingData(int uid)
