@@ -11,6 +11,9 @@ public class TextInputDialog : MonoBehaviour
     [SerializeField]
     private Button decisionButton = null;
 
+    [SerializeField]
+    private int limitNum = 8;
+
     private void Start()
     {
         decisionButton.onClick.AddListener(DecisionDown);
